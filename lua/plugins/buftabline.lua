@@ -6,5 +6,5 @@ return {
 		vim.g.buftabline_numbers = 1
 		vim.g.buftabline_modified_icon = "*"
 		vim.g.buftabline_icon = ""
-	end
+	end,
 }
