@@ -32,13 +32,10 @@ return { -- Collection of various small independent plugins/modules
 		end
 
 		-- ... and there is more!
-		require('mini.tabline').setup()
-		require('mini.pairs').setup()
-		require('mini.comment').setup()
-		require('mini.align').setup()
-		require('mini.move').setup()
-		require('mini.git').setup()
-		require('mini.indentscope').setup()
+		require("mini.tabline").setup()
+		require("mini.comment").setup()
+		require("mini.align").setup()
+		require("mini.indentscope").setup()
 
 		--  Check out: https://github.com/echasnovski/mini.nvim
 	end,

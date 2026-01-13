@@ -1,16 +1,14 @@
 return {
-	"folke/persistence.nvim",
-	event = "BufReadPre",
+	"olimorris/persisted.nvim",
+	event = "BufReadPre", -- Ensure the plugin loads only when a buffer has been loaded
 	opts = {
-		dir = vim.fn.stdpath("state") .. "/sessions/",
-		need = 0,
-		autowrite = true,
-		branch = true,
-		options = { "buffers", "curdir", "folds", "tabpages", "winsize", "winpos", "terminal", "localoption" },
+		-- Your config goes here ...
+		use_git_branch = true,
+		autoload = true,
 	},
 	keys = {
-		{ "<leader>qs", function() require("persistence").select() end,              desc = "Sélectionner une session" },
-		{ "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restaurer la dernière session" },
-		{ "<leader>qd", function() require("persistence").stop() end,                desc = "Ne pas enregistrer la session actuelle" },
+		{ "<leader>qs", "<cmd>SessionSelect<CR>",   desc = "Sélectionner une session" },
+		{ "<leader>ql", "<cmd>SessionLoadLast<CR>", desc = "Restaurer la dernière session" },
+		{ "<leader>qd", "<cmd>SessionDelete<CR>",   desc = "Ne pas enregistrer la session actuelle" },
 	},
 }
