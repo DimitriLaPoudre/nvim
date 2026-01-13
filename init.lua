@@ -101,6 +101,7 @@ vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle right<CR>")
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>")
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>")
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>")
+vim.keymap.set("n", "<leader>bn", "<cmd>enew<CR>")
 vim.keymap.set("n", "<leader>bl", "<cmd>ls<CR>")
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -339,7 +340,7 @@ require("lazy").setup({
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 		-- used for completion, annotations and signatures of Neovim apis
-		"folke/lazydev.nvim",
+	  "folke/lazydev.nvim",
 		ft = "lua",
 		opts = {
 			library = {
@@ -555,10 +556,10 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				clangd = {},
+				-- clangd = {},
 				-- gopls = {},
 				-- pyright = {},
-				rust_analyzer = {},
+				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -568,20 +569,20 @@ require("lazy").setup({
 				-- ts_ls = {},
 				--
 
-				lua_ls = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
-					-- capabilities = {},
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
-						},
-					},
-				},
+				-- lua_ls = {
+				-- 	-- cmd = { ... },
+				-- 	-- filetypes = { ... },
+				-- 	-- capabilities = {},
+				-- 	settings = {
+				-- 		Lua = {
+				-- 			completion = {
+				-- 				callSnippet = "Replace",
+				-- 			},
+				-- 			-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+				-- 			-- diagnostics = { disable = { 'missing-fields' } },
+				-- 		},
+				-- 	},
+				-- },
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -617,51 +618,11 @@ require("lazy").setup({
 					end,
 				},
 			})
+
 		end,
 	},
 
-	{ -- Autoformat
-		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
-		keys = {
-			{
-				"<leader>f",
-				function()
-					require("conform").format({ async = true, lsp_format = "fallback" })
-				end,
-				mode = "",
-				desc = "[F]ormat buffer",
-			},
-		},
-		opts = {
-			notify_on_error = false,
-			format_on_save = function(bufnr)
-				-- Disable "format_on_save lsp_fallback" for languages that don't
-				-- have a well standardized coding style. You can add additional
-				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true }
-				if disable_filetypes[vim.bo[bufnr].filetype] then
-					return nil
-				else
-					return {
-						timeout_ms = 500,
-						lsp_format = "fallback",
-					}
-				end
-			end,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
-			},
-		},
-	},
-
-	{ -- Autocompletion
+		{ -- Autocompletion
 		"saghen/blink.cmp",
 		event = "VimEnter",
 		version = "1.*",
@@ -780,52 +741,6 @@ require("lazy").setup({
 			vim.opt.background = "dark"
 			-- Load the colorscheme here.
 			vim.cmd.colorscheme("oxocarbon")
-		end,
-	},
-
-	-- Highlight todo, notes, etc in comments
-	{
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-	},
-
-	{ -- Collection of various small independent plugins/modules
-		"echasnovski/mini.nvim",
-		config = function()
-			-- Better Around/Inside textobjects
-			--
-			-- Examples:
-			--  - va)  - [V]isually select [A]round [)]paren
-			--  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-			--  - ci'  - [C]hange [I]nside [']quote
-			require("mini.ai").setup({ n_lines = 500 })
-
-			-- Add/delete/replace surroundings (brackets, quotes, etc.)
-			--
-			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-			-- - sd'   - [S]urround [D]elete [']quotes
-			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
-
-			-- Simple and easy statusline.
-			--  You could remove this setup call if you don't like it,
-			--  and try some other statusline plugin
-			local statusline = require("mini.statusline")
-			-- set use_icons to true if you have a Nerd Font
-			statusline.setup({ use_icons = vim.g.have_nerd_font })
-
-			-- You can configure sections in the statusline by overriding their
-			-- default behavior. For example, here we set the section for
-			-- cursor location to LINE:COLUMN
-			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
-
-			-- ... and there is more!
-			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
 	{ -- Highlight, edit, and navigate code
