@@ -7,8 +7,8 @@ return {
 		autoload = true,
 	},
 	keys = {
-		{ "<leader>qs", "<cmd>SessionSelect<CR>",   desc = "Sélectionner une session" },
-		{ "<leader>ql", "<cmd>SessionLoadLast<CR>", desc = "Restaurer la dernière session" },
-		{ "<leader>qd", "<cmd>SessionDelete<CR>",   desc = "Ne pas enregistrer la session actuelle" },
+		{ "<leader>qs", "<cmd>Persisted select<CR>", desc = "Sélectionner une session" },
+		{ "<leader>ql", "<cmd>Persisted load_last<CR>", desc = "Restaurer la dernière session" },
+		{ "<leader>qd", "<cmd>Persisted delete<CR>", desc = "Ne pas enregistrer la session actuelle" },
 	},
 }
