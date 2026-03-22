@@ -1,6 +1,5 @@
 return {
 	"3rd/image.nvim",
-	build = ":ImageInstall",
 	config = function()
 		require("image").setup({
 			backend = "kitty", -- Options : "kitty", "ueberzug", "sixel"
