@@ -32,7 +32,7 @@ return { -- Collection of various small independent plugins/modules
 		end
 
 		-- ... and there is more!
-		require("mini.tabline").setup()
+		-- require("mini.tabline").setup()
 		require("mini.comment").setup()
 		require("mini.align").setup()
 		require("mini.indentscope").setup()
