@@ -100,8 +100,6 @@ vim.keymap.set("i", "<C-s>", "<Esc><cmd>w<CR>")
 vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>")
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle right<CR>")
 
-vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>")
-vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>")
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>")
 vim.keymap.set("n", "<leader>bn", "<cmd>enew<CR>")
 vim.keymap.set("n", "<leader>bl", "<cmd>ls<CR>")
