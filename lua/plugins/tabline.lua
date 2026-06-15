@@ -1,20 +1,14 @@
-return {
-	'romgrk/barbar.nvim',
-	lazy = false,
-	dependencies = {
-		'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-		'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+vim.g.barbar_auto_setup = false
+
+vim.pack.add({
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{
+		src = "https://github.com/romgrk/barbar.nvim",
+		version = vim.version.range('^1'),
 	},
-	init = function() vim.g.barbar_auto_setup = false end,
-	opts = {
-		-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-		-- animation = true,
-		-- insert_at_start = true,
-		-- …etc.
-	},
-	keys = {
-		{ "<Tab>",   "<cmd>BufferNext<CR>" },
-		{ "<S-Tab>", "<cmd>BufferPrevious<CR>" },
-	},
-	version = '^1.0.0', -- optional: only update when a new 1.x version is released
-}
+})
+
+require("barbar").setup({})
+
+vim.keymap.set("n", "<Tab>", "<Cmd>BufferNext<CR>")
+vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>")

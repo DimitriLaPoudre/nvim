@@ -1,3 +1,3 @@
-return {
-	"matze/vim-move",
-}
+vim.pack.add({
+	{ src = 'https://github.com/matze/vim-move' },
+})
