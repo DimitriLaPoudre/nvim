@@ -14,7 +14,13 @@ vim.pack.add({
 -- }
 
 -- Configuration for LSP
--- vim.lsp.config('lua_ls', {})
+vim.lsp.config('lua_ls', {
+	settings = {
+		Lua = {
+			diagnostics = { globals = { 'vim' } },
+		},
+	},
+})
 
 -- Enable LSP completion for non-mason lsp since mason auto enable
 -- vim.lsp.enable(lsp_servers)

@@ -51,12 +51,12 @@ Snacks.setup({
 		sources = {
 			files = {
 				hidden = true,
+				ignored = true,
+
 				win = {
 					input = {
 						keys = {
 							["<S-h>"] = "toggle_hidden",
-							["<S-i>"] = "toggle_ignored",
-							["<S-f>"] = "toggle_follow",
 							["<C-y>"] = { "yazi_copy_relative_path", mode = { "n", "i" } },
 						},
 					},
@@ -73,12 +73,11 @@ Snacks.setup({
 			},
 			grep = {
 				hidden = true,
+				ignored = true,
 				win = {
 					input = {
 						keys = {
 							["<S-h>"] = "toggle_hidden",
-							["<S-i>"] = "toggle_ignored",
-							["<S-f>"] = "toggle_follow",
 						},
 					},
 				},
@@ -94,16 +93,16 @@ Snacks.setup({
 			},
 			grep_buffers = {},
 			explorer = {
-				hidden = true,
+				hidden = false,
+				ignored = false,
 				supports_live = true,
 				auto_close = true,
 				diagnostics = true,
 				diagnostics_open = false,
 				focus = "list",
-				follow_file = true,
-				git_status = true,
+				git_status = false,
 				git_status_open = false,
-				git_untracked = true,
+				git_untracked = false,
 				jump = { close = true },
 				tree = true,
 				layout = { layout = { position = 'right' } },
@@ -112,17 +111,6 @@ Snacks.setup({
 		},
 	},
 })
-
--- vim.api.nvim_create_autocmd({"BufEnter", "WinEnter"}, {
--- 	callback = function()
--- 		print(vim.bo.filetype)
--- 		if vim.startswith(vim.bo.filetype, "snacks_picker") then
--- 			vim.opt_local.complete = ""
--- 			vim.opt_local.omnifunc = ""
--- 		end
--- 	end,
--- })
-
 
 -- stylua: ignore start
 local keymaps = {
@@ -184,7 +172,7 @@ local keymaps = {
 	{ "<leader>bd",      function() Snacks.bufdelete() end,                                      desc = "Delete buffer",               mode = { "n" }, },
 	-- { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete other buffers", mode = { "n" }, },
 	-- Other
-	{ "<leader>.",       function() Snacks.scratch() end,                                        desc = "Toggle Scratch Buffer" },
+	{ "<leader>.",       function() Snacks.scratch({ ft = "markdown" }) end,                     desc = "Toggle Scratch Buffer" },
 	{ "<leader>S",       function() Snacks.scratch.select() end,                                 desc = "Select Scratch Buffer" },
 	{ "<leader>br",      function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
 	{ "<leader>gg",      function() Snacks.lazygit() end,                                        desc = "Lazygit" },
