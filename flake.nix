@@ -12,12 +12,13 @@
       flake-utils,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-
-        my-nvim = pkgs.writeShellApplication {
+    let
+      mkNvim =
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        pkgs.writeShellApplication {
           name = "my-nvim";
 
           runtimeInputs = with pkgs; [
@@ -40,13 +41,13 @@
             exec nvim "$@"
           '';
         };
-      in
-      {
-        packages.my-nvim = my-nvim;
-
-        overlays.default = final: prev: {
-          my-nvim = my-nvim;
-        };
-      }
-    );
+    in
+    (flake-utils.lib.eachDefaultSystem (system: {
+      packages.my-nvim = mkNvim system;
+    }))
+    // {
+      overlays.default = final: prev: {
+        my-nvim = mkNvim prev.system;
+      };
+    };
 }
