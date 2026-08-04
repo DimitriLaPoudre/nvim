@@ -25,6 +25,8 @@
             neovim
 
             # Mandatory
+            git
+            ripgrep
             lua51Packages.lua
             tree-sitter
             lua51Packages.luarocks
@@ -37,7 +39,7 @@
           ];
 
           text = ''
-            export XDG_CONFIG_HOME=${./.}
+            export XDG_CONFIG_HOME=${./config}
             exec nvim "$@"
           '';
         };
