@@ -28,6 +28,7 @@
             git
             ripgrep
             lua51Packages.lua
+            gcc
             tree-sitter
             lua51Packages.luarocks
 
