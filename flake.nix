@@ -47,11 +47,11 @@
         };
     in
     (flake-utils.lib.eachDefaultSystem (system: {
-      packages.my-nvim = mkNvim system;
+      packages.nvim = mkNvim system;
     }))
     // {
       overlays.default = final: prev: {
-        my-nvim = mkNvim prev.system;
+        nvim = mkNvim prev.system;
       };
     };
 }
