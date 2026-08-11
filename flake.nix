@@ -19,7 +19,7 @@
           pkgs = import nixpkgs { inherit system; };
         in
         pkgs.writeShellApplication {
-          name = "my-nvim";
+          name = "nvim";
 
           runtimeInputs = with pkgs; [
             neovim
