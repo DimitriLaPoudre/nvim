@@ -22,8 +22,18 @@ vim.lsp.config('lua_ls', {
 	},
 })
 
+vim.lsp.config('nil_ls', {
+	settings = {
+		['nil'] = {
+			formatting = {
+				command = { 'nixpkgs-fmt' },
+			},
+		},
+	},
+})
+
 -- Enable LSP completion for non-mason lsp since mason auto enable
--- vim.lsp.enable(lsp_servers)
+vim.lsp.enable({ 'lua_ls', 'nil_ls' })
 
 -- Keymaps for LSP most of them are in snacks for the picker
 vim.api.nvim_create_autocmd('LspAttach', {
