@@ -22,10 +22,12 @@ vim.lsp.config('lua_ls', {
 	},
 })
 
-vim.lsp.config('nil_ls', {})
-
 -- Enable LSP completion for non-mason lsp since mason auto enable
-vim.lsp.enable({ 'lua_ls', 'nil_ls' })
+vim.lsp.enable({
+	'lua_ls',
+	'nil_ls',
+	'ols',
+})
 
 -- Keymaps for LSP most of them are in snacks for the picker
 vim.api.nvim_create_autocmd('LspAttach', {
