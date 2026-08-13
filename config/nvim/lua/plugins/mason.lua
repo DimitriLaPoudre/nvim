@@ -7,10 +7,7 @@ vim.pack.add({
 
 require('mason').setup()
 require('mason-tool-installer').setup({
-	ensure_installed = {
-		'lua_ls',
-		'gopls',
-	},
+	ensure_installed = {},
 })
 require("mason-lspconfig").setup({
 	ensure_installed = {},

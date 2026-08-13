@@ -27,6 +27,7 @@ vim.lsp.enable({
 	'lua_ls',
 	'nil_ls',
 	'ols',
+	'gopls'
 })
 
 -- Keymaps for LSP most of them are in snacks for the picker
