@@ -38,7 +38,7 @@
           ];
 
           text = ''
-            export XDG_CONFIG_HOME=${./config}
+            export XDG_CONFIG_HOME="''${NVIM_CONFIG_HOME:-${./config}}"
             exec nvim "$@"
           '';
         };

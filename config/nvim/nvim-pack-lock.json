@@ -30,6 +30,10 @@
       "rev": "b69ff84a6223de39d34a150b980d3b9ef19549fb",
       "src": "https://github.com/crnvl96/lazydocker.nvim"
     },
+    "lazysql.nvim": {
+      "rev": "51a5c2bd26650c0c6a0b19d52995cceafb4b6037",
+      "src": "https://github.com/LostbBlizzard/lazysql.nvim"
+    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
