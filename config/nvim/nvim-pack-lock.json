@@ -28,7 +28,7 @@
     },
     "lazydocker.nvim": {
       "rev": "b69ff84a6223de39d34a150b980d3b9ef19549fb",
-      "src": "https://github.com/crnvl96/lazydocker.nvim"
+      "src": "https://github.com/mgierada/lazydocker.nvim"
     },
     "lazysql.nvim": {
       "rev": "51a5c2bd26650c0c6a0b19d52995cceafb4b6037",
@@ -104,6 +104,10 @@
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "toggleterm.nvim": {
+      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
+      "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "vim-cool": {
       "rev": "9ea940c0d537e55de0de4c0298c04b976960fb12",
