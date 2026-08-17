@@ -35,9 +35,6 @@
             # LSP
             lua-language-server
             nil
-
-            # Plugin deps
-            lazygit
           ];
 
           text = ''
